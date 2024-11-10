@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7YKH9L3kEe0paNJpFwNgtcdxV9PrKvzUshLvPoBLt3Y=",
+  "Source": "ApexaApp.API",
+  "BasePath": "_content/ApexaApp.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,10 @@
+[
+    {
+      "Id": 1,
+      "FullName": "Felipe Ardila",
+      "SIN": "528892356",
+      "Address": "365 Prince of Wales",
+      "PhoneNumber":"6475834543",
+      "HealthStatus":1
+    }
+]

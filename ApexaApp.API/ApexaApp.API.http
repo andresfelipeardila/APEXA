@@ -1,0 +1,6 @@
+@ApexaApp.API_HostAddress = http://localhost:5014
+
+GET {{ApexaApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
