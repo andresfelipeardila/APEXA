@@ -7,27 +7,20 @@ using ApexaApp.API.Data.Interfaces;
 
 namespace ApexaApp.API.Data.Specifications
 {
-    public class BaseSpecification<T> : ISpecification<T>
+    public class BaseSpecification<T>(Expression<Func<T, bool>>? criteria) : ISpecification<T>
     {
-        public BaseSpecification()
-        {
-        }
+        protected BaseSpecification() : this(null) {}
 
-        public BaseSpecification(Expression<Func<T, bool>> criteria)
-        {
-            Criteria = criteria;
-        }
-
-        public Expression<Func<T, bool>> Criteria { get;}
+        public Expression<Func<T, bool>>? Criteria => criteria; 
 
         public List<Expression<Func<T, object>>> Includes {get;} = 
             new List<Expression<Func<T, object>>>();
 
         public List<string> IncludeStrings { get; } = new List<string>();
 
-        public Expression<Func<T, object>> OrderBy {get; private set;}
+        public Expression<Func<T, object>>? OrderBy {get; private set;} 
 
-        public Expression<Func<T, object>> OrderByDescending {get; private set;}
+        public Expression<Func<T, object>>? OrderByDescending {get; private set;}  
 
         public int Take {get; private set;}
 

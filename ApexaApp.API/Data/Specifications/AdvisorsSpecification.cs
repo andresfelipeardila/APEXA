@@ -9,7 +9,7 @@ namespace ApexaApp.API.Data.Specifications
     public class AdvisorsSpecification : BaseSpecification<Advisor>
     {
         public AdvisorsSpecification(AdvisorSpecParams advisorsParams)
-        : base( x=> (string.IsNullOrEmpty(advisorsParams.Search) || x.FullName.ToLower().Contains(advisorsParams.Search)))
+        : base(a => string.IsNullOrEmpty(advisorsParams.Search) || a.FullName.ToLower().Contains(advisorsParams.Search))
         {
             ApplyPaging(advisorsParams.PageSize * (advisorsParams.PageIndex -1), advisorsParams.PageSize);
         

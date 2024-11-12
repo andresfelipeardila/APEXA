@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApexaApp.API.Models
 {
-    [PrimaryKey("Id","SIN")]
+    //[PrimaryKey("Id","SIN")]
     public class Advisor : BaseEntity
     {
         public required string FullName { get; set; }

@@ -1,6 +1,7 @@
 using ApexaApp.API.Data.Interfaces;
 using ApexaApp.API.Data.Repositories;
 using ApexaApp.API.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ApexaApp.API.Services
 {
@@ -25,6 +26,44 @@ namespace ApexaApp.API.Services
         {
             var advisors = await _advisorRepo.GetAdvisorByHealthStatusAsync(healthStatus);
             return advisors;
+        }
+
+        public async Task<Advisor> GetAdvisorByIdAsync(int id)
+        {
+            var advisor = await _advisorRepo.GetAdvisorByIdAsync(id);
+            return advisor!;
+        }
+
+        public async Task DeleteAdvisorByIdAsync(int id)
+        {
+            var advisor = await _advisorRepo.GetAdvisorByIdAsync(id);
+            if(advisor==null)
+                return;
+        
+            _unitOfWork.Repository<Advisor>().Delete(advisor);
+            if(await _unitOfWork.Complete()){
+                return;
+            }
+            throw new Exception("Deleting the advisor failed on save");  
+            
+        }
+
+        public async Task AddAdvisor(Advisor advisor)
+        {
+            _unitOfWork.Repository<Advisor>().Add(advisor);
+             if(await _unitOfWork.Complete()){
+                return;
+            }
+            throw new Exception("Creating the advisor failed on save");  
+        }
+
+        public async Task UpdateAdvisor(Advisor advisor)
+        {
+            _unitOfWork.Repository<Advisor>().Update(advisor);
+             if(await _unitOfWork.Complete()){
+                return;
+            }
+            throw new Exception("Updating the advisor failed on save");  
         }
 
     }

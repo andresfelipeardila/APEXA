@@ -144,3 +144,4 @@ C:\Projects\APEXA\ApexaApp.API\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite
 C:\Projects\APEXA\ApexaApp.API\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Projects\apexa\ApexaApp.API\obj\Debug\net8.0\ApexaApp.API.RazorTargetAssemblyInfo.cache
 C:\Projects\APEXA\ApexaApp.API\bin\Debug\net8.0\Data\SeedData\advisors.json
+C:\Projects\APEXA\ApexaApp.API\obj\Debug\net8.0\ApexaApp.API.sourcelink.json

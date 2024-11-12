@@ -28,11 +28,15 @@ namespace ApexaApp.API.Extensions
             });
 
             // services.AddSingleton<IResponseCacheService, ResponseCacheService>();
+                    
             services.AddScoped<IAdvisorRepository, AdvisorRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
             services.AddScoped<IAdvisorService, AdvisorService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+                      
             
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+                   
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<ApiBehaviorOptions>(options => 
             {
@@ -53,11 +57,11 @@ namespace ApexaApp.API.Extensions
                 };
             });
 
-            // services.AddCors(opt => {
-            //     opt.AddPolicy("CorsPolicy", policy => {
-            //         policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5014","https://localhost:5014");
-            //     });
-            // });
+            services.AddCors(opt => {
+                opt.AddPolicy("CorsPolicy", policy => {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
             
 
             return services;

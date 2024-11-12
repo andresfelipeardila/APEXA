@@ -21,7 +21,6 @@ namespace ApexaApp.API.Data
                 context.Advisors.AddRange(advisors!);                
             }
 
-            // Saves the products and categories information
             if(context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
 
            

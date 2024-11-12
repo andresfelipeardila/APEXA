@@ -4,9 +4,9 @@ namespace ApexaApp.API.Helpers
     {
         public enum HealthStatus
         {
-            Green,
-            Yellow,
-            Red
+            Green = 1,
+            Yellow = 2,
+            Red = 3
         }
     }
 }

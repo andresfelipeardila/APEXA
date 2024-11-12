@@ -1,10 +1,37 @@
 [
     {
-      "Id": 1,
       "FullName": "Felipe Ardila",
       "SIN": "528892356",
       "Address": "365 Prince of Wales",
       "PhoneNumber":"6475834543",
+      "HealthStatus":1
+    },
+    {
+      "FullName": "Emily Thompson",
+      "SIN": "527651243",
+      "Address": "123 Maple St",
+      "PhoneNumber":"6045551209",
+      "HealthStatus":3
+    },
+    {
+      "FullName": "James Harrison",
+      "SIN": "539981477",
+      "Address": "456 Oak Ave",
+      "PhoneNumber":"5145558046",
+      "HealthStatus":2
+    },
+    {
+      "FullName": "Sophie Mitchell",
+      "SIN": "519888432",
+      "Address": "789 Pine Rd",
+      "PhoneNumber":"4165552387",
+      "HealthStatus":2
+    },
+    {
+      "FullName": "Daniel Roberts",
+      "SIN": "577584431",
+      "Address": "654 Elm Blvd",
+      "PhoneNumber":"4035555923",
       "HealthStatus":1
     }
 ]

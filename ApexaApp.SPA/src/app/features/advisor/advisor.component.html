@@ -1,0 +1,59 @@
+<div class="container mt-6">
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold underline">Advisors</h1>
+    </div>
+    
+    <!-- <ul>
+      @for(advisor of advisors; track advisor.sin) {
+        <li>{{advisor.fullName}} | {{advisor.sin}} | {{advisor.address}} | {{advisor.healthStatus}}</li>
+      }
+  
+    </ul> -->
+    <!-- <table mat-table [dataSource]="advisors" class="mat-elevation-z8">
+      @for (column of displayedColumns; track column) {
+        <ng-container [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+          <td mat-cell *matCellDef="let element"> {{element[column]}}</td>
+        </ng-container>
+      }
+    
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table> -->
+    <table class="pt-5 container border-collapse table-auto border border-gray-300 shadow-lg w-full">
+        <tr>
+            @for (column of displayedColumns; track column) {
+                <th class="px-4 py-2 text-sm font-semibold text-gray-700 uppercase tracking-wider hover:bg-gray-200"> {{column}} </th>
+            }
+        </tr>     
+        @for (advisor of advisors; track advisor) 
+        {
+            <tr class="border-t border-gray-500 p4 bg-white text-center">
+                <td class="p-4 bg-white">
+                    <span>{{advisor.fullName}}</span>
+                </td>
+                <td class="p-4 bg-white">
+                    <span>{{advisor.sin}}</span>
+
+                </td>
+                <td class="p-4">
+                    <span>{{advisor.address}}</span>
+                </td>
+                <td class="p-4">
+                    <span>{{advisor.phoneNumber}}</span>
+                </td>
+                <td class="p-4">
+                    <div class="circle" [ngStyle]="{'background-color':  advisor.healthStatus?.toLowerCase()}">
+                    </div>
+                    <!-- <span>{{advisor.healthStatus}}</span> -->
+                </td>
+                <td class="p-4">
+                    <button mat-stroked-button (click)="deleteAdvisor(advisor.id)">Update</button>
+                </td>
+                <td class="p-4">
+                    <button mat-stroked-button (click)="deleteAdvisor(advisor.id)">Delete</button>
+                </td>
+            </tr>
+        }
+    </table>
+  </div>

@@ -10,6 +10,8 @@ namespace ApexaApp.API.Dtos
     public class AdvisorDto
     {
         [Required]
+        public int Id { get; set; }
+        [Required]
         public string FullName { get; set; } = string.Empty;
         [Required]
         [MaxLength(9, ErrorMessage = "Max length is 9")]

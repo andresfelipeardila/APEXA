@@ -22,10 +22,6 @@ namespace ApexaApp.API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("SIN")
-                        .HasMaxLength(9)
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Address")
                         .HasMaxLength(10)
                         .HasColumnType("TEXT");
@@ -43,7 +39,15 @@ namespace ApexaApp.API.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id", "SIN");
+                    b.Property<string>("SIN")
+                        .IsRequired()
+                        .HasMaxLength(9)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SIN")
+                        .IsUnique();
 
                     b.ToTable("Advisors");
                 });

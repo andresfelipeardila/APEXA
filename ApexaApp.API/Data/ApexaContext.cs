@@ -41,6 +41,10 @@ namespace ApexaApp.API.Data
                 v => v.ToString(), // Store as string
                 v => (HealthStatus)Enum.Parse(typeof(HealthStatus), v) // Convert back from string
             );
+
+            modelBuilder.Entity<Advisor>()
+            .HasIndex(a => a.SIN) //Specifies the field that is require as unique
+            .IsUnique(); //Ensures the field is Unique
         }
     }
 }

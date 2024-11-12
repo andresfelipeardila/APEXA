@@ -1,29 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+
 using ApexaApp.API.Data.Interfaces;
+using ApexaApp.API.Data.Specifications;
 using ApexaApp.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApexaApp.API.Data.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T>(ApexaContext context) : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly ApexaContext _context;
-        public GenericRepository(ApexaContext context)
-        {
-            _context = context;
-        }
 
         public async Task<T?> GetByIdAsync(int id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await context.Set<T>().FindAsync(id);
         }
 
         public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            return await _context.Set<T>().ToListAsync();
+            return await context.Set<T>().ToListAsync();
         }
 
         public async Task<T?> GetEntityWithSpec(ISpecification<T> spec)
@@ -43,23 +37,23 @@ namespace ApexaApp.API.Data.Repositories
 
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
-            return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
+            return SpecificationEvaluator<T>.GetQuery(context.Set<T>().AsQueryable(), spec);
         }
 
         public void Add(T entity)
         {
-            _context.Set<T>().Add(entity);
+            context.Set<T>().Add(entity);
         }
 
         public void Update(T entity)
         {
-            _context.Set<T>().Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
+            context.Set<T>().Attach(entity);
+            context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(T entity)
         {
-            _context.Set<T>().Remove(entity);
+            context.Set<T>().Remove(entity);
         }
     }
 }

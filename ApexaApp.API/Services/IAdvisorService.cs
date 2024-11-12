@@ -6,5 +6,9 @@ namespace ApexaApp.API.Services
     {
         Task<IReadOnlyList<Advisor>> GetAllAdvisorsAsync();
         Task<IReadOnlyList<Advisor>> GetAdvisorsByHealthStatusAsync(string healthStatus);
+        Task DeleteAdvisorByIdAsync(int id);
+        Task<Advisor> GetAdvisorByIdAsync(int id);
+        Task AddAdvisor(Advisor advisor);
+        Task UpdateAdvisor(Advisor advisor);
     }
 }

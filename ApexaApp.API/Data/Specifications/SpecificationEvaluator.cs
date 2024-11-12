@@ -2,7 +2,7 @@ using ApexaApp.API.Data.Interfaces;
 using ApexaApp.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApexaApp.API.Data
+namespace ApexaApp.API.Data.Specifications
 {
     public class SpecificationEvaluator<TEntity> where TEntity : BaseEntity 
     {
