@@ -105,7 +105,6 @@ namespace ApexaApp.API.Controllers
             if(advisorToAdd!=null)
                 throw new Exception("Advisor already created with that SIN Number");
 
-
             var newAdvisor = _mapper.Map<Advisor>(advisor);
 
             await _advisorService.AddAdvisor(newAdvisor);

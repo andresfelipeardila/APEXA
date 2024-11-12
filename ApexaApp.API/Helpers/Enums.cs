@@ -9,4 +9,5 @@ namespace ApexaApp.API.Helpers
             Red = 3
         }
     }
+
 }

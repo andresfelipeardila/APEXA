@@ -4,6 +4,8 @@ import { MatTableModule } from '@angular/material/table';
 import { AdvisorDto } from '../../core/Clients/advisor.client';
 import { AdvisorService } from '../../core/services/advisor.service';
 import { NgStyle } from '@angular/common';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddAdvisorComponent } from './modal/add-advisor/add-advisor.component';
 
 @Component({
   selector: 'app-advisor',
@@ -14,6 +16,7 @@ import { NgStyle } from '@angular/common';
 })
 export class AdvisorComponent implements OnInit{
   private advisorService = inject(AdvisorService);
+  private modalService = inject(NgbModal);
 
   title = 'Apexa App';
   advisors: AdvisorDto[] = [];
@@ -40,6 +43,11 @@ export class AdvisorComponent implements OnInit{
       },
       error: error => console.log(error)
     });
+  }
+
+  openAddAdvisorModal() {
+    const modalRef = this.modalService.open(AddAdvisorComponent);
+		modalRef.componentInstance.name = 'World';
   }
 
 }

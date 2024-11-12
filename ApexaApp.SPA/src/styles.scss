@@ -22,3 +22,5 @@ $customTheme: mat.define-theme();
 .container {
     @apply mx-auto max-w-screen-2xl;
 }
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

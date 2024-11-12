@@ -10,7 +10,8 @@ namespace ApexaApp.API.Helpers
         {
             CreateMap<Advisor, AdvisorDto>().ForMember(dest => dest.HealthStatus, 
             opt => opt.MapFrom(src => src.HealthStatus.ToString()));
-            CreateMap<AdvisorDto, Advisor>();
+            CreateMap<AdvisorDto, Advisor>()
+            .ForMember(d => d.HealthStatus, o => o.MapFrom<HealthStatusResolver>());
         }
         
     }
