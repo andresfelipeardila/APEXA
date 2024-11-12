@@ -48,10 +48,10 @@
                     <!-- <span>{{advisor.healthStatus}}</span> -->
                 </td>
                 <td class="p-4">
-                    <button mat-stroked-button (click)="deleteAdvisor(advisor.id)">Update</button>
+                    <button class="btn btn-lg btn-outline-primary" (click)="openUpdateAdvisorModal(advisor)">Update</button>
                 </td>
                 <td class="p-4">
-                    <button mat-stroked-button (click)="deleteAdvisor(advisor.id)">Delete</button>
+                    <button class="btn btn-lg btn-outline-primary" (click)="deleteAdvisor(advisor.id)">Delete</button>
                 </td>
             </tr>
         }

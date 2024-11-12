@@ -14,7 +14,6 @@ export class AdvisorService {
   constructor(private _AdvisorClient: AdvisorClient) {}
 
   getAdvisors() {
-
     return this._AdvisorClient.all();
   }
 

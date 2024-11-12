@@ -6,6 +6,7 @@ import { AdvisorService } from '../../core/services/advisor.service';
 import { NgStyle } from '@angular/common';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddAdvisorComponent } from './modal/add-advisor/add-advisor.component';
+import { UpdateAdvisorComponent } from './modal/update-advisor/update-advisor.component';
 
 @Component({
   selector: 'app-advisor',
@@ -48,6 +49,13 @@ export class AdvisorComponent implements OnInit{
   openAddAdvisorModal() {
     const modalRef = this.modalService.open(AddAdvisorComponent);
 		modalRef.componentInstance.name = 'World';
+  }
+
+  openUpdateAdvisorModal(advisor:AdvisorDto) {
+    //console.log(advisor);
+    
+    const modalRef = this.modalService.open(UpdateAdvisorComponent);
+		modalRef.componentInstance.advisor = advisor;
   }
 
 }

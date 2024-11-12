@@ -1,1 +1,60 @@
-<p>update-advisor works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">Update advisor</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <!-- <p>Hello, {{ name }}!</p> -->
+    <form class="advisor-form"  [formGroup]="advisorForm">
+        <!-- <mat-form-field class="example-full-width">
+          <mat-label>Company (disabled)</mat-label>
+          <input matInput disabled value="Google">
+        </mat-form-field> -->
+      
+        <div class="w-full">
+            <mat-form-field class="w-full">
+                <mat-label>Fullname</mat-label>
+                <input matInput #fullname formControlName="fullName">
+                <mat-hint align="start"><strong>Is required</strong> </mat-hint>
+                <!-- @if (phoneFormControl.hasError('required')) {
+                    <mat-error>Please enter a valid Fullname</mat-error>
+                } -->
+            </mat-form-field>    
+        </div>
+        <div class="w-full">
+            <mat-form-field class="w-full">
+                <mat-label>SIN</mat-label>
+                <input matInput #sin  maxlength="9" formControlName="sin">
+                <mat-hint align="start"><strong>Is required</strong> </mat-hint>
+                <mat-hint align="end">{{sin.value.length}} / 9</mat-hint>
+                <!-- @if (phoneFormControl.hasError('required') || phoneFormControl.hasError('minLength', '9')) {
+                    <mat-error>Please enter a valid SIN</mat-error>
+                } -->
+            </mat-form-field>    
+        </div>
+        <div class="w-full">
+              <p>
+                <mat-form-field class="w-full">
+                  <mat-label>Address</mat-label>
+                  <input matInput #address placeholder="Ex. 100 Main St" formControlName="address">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+              </p>
+        </div>
+        <div class="w-full">
+            <mat-form-field class="w-full">
+                <mat-label>Phone Number</mat-label>
+                <input type="tel" #phoneNumber matInput formControlName="phoneNumber" 
+                    placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-hint align="end">{{phoneNumber.value.length}} / 10</mat-hint>
+                <!-- @if (phoneFormControl.hasError('minLength', '10')) {
+                    <mat-error>Please enter a valid phone number</mat-error>
+                } -->
+            </mat-form-field>    
+        </div>  
+      </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="clickUpdateAdvisor()">Submit</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>

@@ -55,6 +55,8 @@ export class AddAdvisorComponent implements OnInit{
       return;
     }
 
-    this.activeModal.close('Close click');
+
+    this.activeModal.close('Close click')
+
   }
 }
