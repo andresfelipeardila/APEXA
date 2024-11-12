@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,11 +24,11 @@ export class AddAdvisorComponent implements OnInit{
     phoneNumber: ['', [Validators.minLength(10)]]
   });
 
-	@Input() name: string = '';
+	@Output() advisorCreated= new EventEmitter<void>();
+
   // phoneFormControl = new FormControl('', [Validators.minLength(10)]);
   // fullnameFormControl = new FormControl('', [Validators.required]);
   // sinFormControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
-
 
   constructor(private fb: FormBuilder) {}
 
@@ -37,17 +37,15 @@ export class AddAdvisorComponent implements OnInit{
   }
 
   clickAddAdvisor() {
-    console.log('hello');
     console.log(this.advisorForm.valid);
 
-    //var advisor : AdvisorDto {};
-    
     if (this.advisorForm.valid) {
       console.log(this.advisorForm.value); // Get form values on submit
       this.advisorForm.value.id = 0;
       this.advisorService.addAdvisor(this.advisorForm.value).subscribe({
         next: response => {
           console.log('Advisor Added');
+          this.advisorCreated.emit();
         },
         error: error => console.log(error)
       });

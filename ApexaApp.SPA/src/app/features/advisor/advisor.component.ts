@@ -46,16 +46,26 @@ export class AdvisorComponent implements OnInit{
     });
   }
 
+  //Open the Add Advisor Modal
   openAddAdvisorModal() {
-    const modalRef = this.modalService.open(AddAdvisorComponent);
-		modalRef.componentInstance.name = 'World';
+    const addAdvisorModalRef = this.modalService.open(AddAdvisorComponent);
+		
+    // Listen for the form submission event from the modal
+    addAdvisorModalRef.componentInstance.advisorCreated.subscribe(() => {
+      this.loadAdvisors();
+    });
+
   }
 
   openUpdateAdvisorModal(advisor:AdvisorDto) {
-    //console.log(advisor);
-    
-    const modalRef = this.modalService.open(UpdateAdvisorComponent);
-		modalRef.componentInstance.advisor = advisor;
+    const updateAdvisorModalRef = this.modalService.open(UpdateAdvisorComponent);
+
+		updateAdvisorModalRef.componentInstance.advisor = advisor;
+
+    // Listen for the form submission event from the modal
+    updateAdvisorModalRef.componentInstance.advisorUpdated.subscribe(() => {
+      this.loadAdvisors();
+    });
   }
 
 }

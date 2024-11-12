@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,7 +28,7 @@ export class UpdateAdvisorComponent {
   });
 
   @Input() advisor: AdvisorDto = new(AdvisorDto);
-
+  @Output() advisorUpdated= new EventEmitter<void>();
 	
   // phoneFormControl = new FormControl('', [Validators.minLength(10)]);
   // fullnameFormControl = new FormControl('', [Validators.required]);
@@ -59,6 +59,7 @@ export class UpdateAdvisorComponent {
       this.advisorService.updateAdvisor(this.advisorForm.value).subscribe({
         next: response => {
           console.log('Advisor Updated');
+          this.advisorUpdated.emit();
         },
         error: error => console.log(error)
       });

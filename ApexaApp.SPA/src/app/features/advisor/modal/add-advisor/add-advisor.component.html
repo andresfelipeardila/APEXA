@@ -43,7 +43,7 @@
         <div class="w-full">
             <mat-form-field class="w-full">
                 <mat-label>Phone Number</mat-label>
-                <input type="tel" #phoneNumber matInput formControlName="phoneNumber" 
+                <input type="tel" #phoneNumber matInput maxlength="10" formControlName="phoneNumber" 
                     placeholder="555-555-1234">
                 <mat-icon matSuffix>mode_edit</mat-icon>
                 <mat-hint align="end">{{phoneNumber.value.length}} / 10</mat-hint>
