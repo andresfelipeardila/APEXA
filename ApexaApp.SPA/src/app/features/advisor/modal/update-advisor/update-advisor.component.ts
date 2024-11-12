@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdvisorService } from '../../../../core/services/advisor.service';
 import { AdvisorDto } from '../../../../core/Clients/advisor.client';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-advisor',
@@ -35,9 +36,7 @@ export class UpdateAdvisorComponent {
   // sinFormControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
 
 
-  constructor(private fb: FormBuilder) {
-    
-  }
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     console.log(this.advisor);
@@ -59,9 +58,13 @@ export class UpdateAdvisorComponent {
       this.advisorService.updateAdvisor(this.advisorForm.value).subscribe({
         next: response => {
           console.log('Advisor Updated');
+          this.toastr.success('Advisor Updated', 'Advisor Updated');
           this.advisorUpdated.emit();
         },
-        error: error => console.log(error)
+        error: error => {
+          console.log(error);
+          this.toastr.error('Error while updating the advisor', '');
+        } 
       });
     } else {
       return;

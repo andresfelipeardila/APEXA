@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdvisorService } from '../../../../core/services/advisor.service';
 import { AdvisorDto } from '../../../../core/Clients/advisor.client';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-advisor',
@@ -30,7 +31,7 @@ export class AddAdvisorComponent implements OnInit{
   // fullnameFormControl = new FormControl('', [Validators.required]);
   // sinFormControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     
@@ -45,9 +46,13 @@ export class AddAdvisorComponent implements OnInit{
       this.advisorService.addAdvisor(this.advisorForm.value).subscribe({
         next: response => {
           console.log('Advisor Added');
+          this.toastr.success('Advisor Added', 'Advisor Added');
           this.advisorCreated.emit();
         },
-        error: error => console.log(error)
+        error: error => {
+          console.log(error);
+          this.toastr.error('Error while adding the advisor', '');
+        } 
       });
     } else {
       return;

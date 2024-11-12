@@ -63,7 +63,11 @@ namespace ApexaApp.API.Controllers
             return Ok(data);
         }
 
-
+        /// <summary>
+        /// Get Advisors based on the Advisors Spec Params(We could add search field or other filters)
+        /// </summary>
+        /// <param name="advisorParams">Params we need to filter the advisors list</param>
+        /// <returns>Filtered list of Advisors(Paginated)</returns>
         [HttpGet]
         public async Task<ActionResult<Pagination<AdvisorDto>>> GetAdvisors(
             [FromQuery]AdvisorSpecParams advisorParams) 
@@ -83,6 +87,11 @@ namespace ApexaApp.API.Controllers
             advisorParams.PageSize, totalItems, data));
         }
 
+        /// <summary>
+        /// Delete an advisor 
+        /// </summary>
+        /// <param name="id">Id of the Advisor to be deleted</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAdvisor(int id) 
         {
@@ -96,6 +105,12 @@ namespace ApexaApp.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Adds a new advisor
+        /// </summary>
+        /// <param name="advisor">Advisor object</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         [HttpPost]
         public async Task<IActionResult> AddAdvisor(AdvisorDto advisor)
         {
@@ -112,7 +127,11 @@ namespace ApexaApp.API.Controllers
             return Ok();
         }
 
-
+        /// <summary>
+        /// Updates an advisor
+        /// </summary>
+        /// <param name="advisor">Advisor to update</param>
+        /// <returns></returns>
         [HttpPost("update")]
         public async Task<IActionResult> UpdateAdvisor(AdvisorDto advisor)
         {

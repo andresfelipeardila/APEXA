@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApexaApp.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15cea784dd7f961768dcb9cf3f64cccaa51b4749")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+036e6c309ca0b431fabc925fa692991057bec4d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApexaApp.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApexaApp.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

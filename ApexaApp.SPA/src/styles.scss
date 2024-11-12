@@ -24,3 +24,5 @@ $customTheme: mat.define-theme();
 }
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+@import 'ngx-toastr/toastr';
+

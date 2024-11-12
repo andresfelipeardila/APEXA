@@ -7,6 +7,7 @@ import { NgStyle } from '@angular/common';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddAdvisorComponent } from './modal/add-advisor/add-advisor.component';
 import { UpdateAdvisorComponent } from './modal/update-advisor/update-advisor.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-advisor',
@@ -25,6 +26,8 @@ export class AdvisorComponent implements OnInit{
   displayedColumns: string[] = ['FULL NAME', 'SIN', 'ADDRESS', 'PHONE NUMBER', 'HEALTH STATUS', ''];
   columnsToDisplay: string[] = this.displayedColumns.slice();
 
+  constructor(private toastr: ToastrService) {}
+
   ngOnInit(): void {
     this.loadAdvisors();
   }
@@ -40,9 +43,13 @@ export class AdvisorComponent implements OnInit{
     this.advisorService.deleteAdvisor(id).subscribe({
       next: response => {
         this.loadAdvisors();
+        this.toastr.success('Advisor Deleted', 'Advisor Deleted');
         console.log('Advisor Deleted');
       },
-      error: error => console.log(error)
+      error: error => {
+          console.log(error);
+          this.toastr.error('Error while deleting an advisor', '');
+      } 
     });
   }
 
@@ -54,7 +61,6 @@ export class AdvisorComponent implements OnInit{
     addAdvisorModalRef.componentInstance.advisorCreated.subscribe(() => {
       this.loadAdvisors();
     });
-
   }
 
   openUpdateAdvisorModal(advisor:AdvisorDto) {
